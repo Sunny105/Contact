@@ -1,0 +1,47 @@
+<html>
+	<body>
+        <form action="#" th:action="@{/Form}" th:object="${contactForm}" method="post">
+           <table>
+                <tr>
+                    <td>Nom:</td>
+                    <td><input type="text" th:field="*{nom}" /></td>
+                    <td th:if="${#fields.hasErrors('nom')}" th:errors="*{nom}">Name Error</td>
+                </tr>
+                <tr>
+                    <td>Prenom:</td>
+                    <td><input type="text" th:field="*{prenom}" /></td>
+                    <td th:if="${#fields.hasErrors('prenom')}" th:errors="*{prenom}">Name Error</td>
+                </tr>
+                <tr>
+                	<td>Numéro de téléphone</td>
+                	<td><input type="text" th:field="*{num}" /></td>
+                	<td th:if="${#fields.hasErrors('num')}" th:errors="*{num}">Num Error</td>
+                </tr>
+                <tr>
+                	<td>Adresse e-mail</td>
+                	<td><input type="text" th:field="*{mail}" /></td>
+                	<td th:if="${#fields.hasErrors('mail')}" th:errors="*{mail}">Email Error</td>
+                </tr>
+                <tr>
+                	<td>Adresse</td>
+                	<td><input type="text" th:field="*{adresse}" /></td>
+                	<td th:if="${#fields.hasErrors('adresse')}" th:errors="*{adresse}">Adress Error</td>
+                </tr>
+                <tr>
+                	<td>Code postal</td>
+                	<td><input type="text" th:field="*{CP}" /></td>
+                	<td th:if="${#fields.hasErrors('CP')}" th:errors="*{CP}">CP Error</td>
+                </tr>
+                <tr>
+                	<td>Ville</td>
+                	<td><input type="text" th:field="*{ville}" /></td>
+                	<td th:if="${#fields.hasErrors('ville')}" th:errors="*{ville}">Num Error</td>
+                </tr>
+                <tr>
+                    <td><button type="submit">Ajouter</button></td>
+                </tr>
+            </table>
+        </form>
+		
+	</body>
+</html>
