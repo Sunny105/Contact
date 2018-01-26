@@ -1,5 +1,16 @@
 <html>
+	<style>
+	    table {
+	        border-collapse: collapse;
+	    }
+	
+	    table, td, th {
+	        border: 1px solid black;
+	        padding: 10px;
+	    }
+	</style>
 	<body>
+	<h1> Liste des contacts</h1>
 		<table>
 			<tr>
                 <th>Id</th>
@@ -17,6 +28,6 @@
                 <td><a th:href="@{'/delete/' + ${e.getId()}}">Supprimer</a></td>
             </tr>
 		</table>
-		<p><a href="/Form">Ajouter</a></p>
+		<p><a href="/Form">Ajouter un contact</a></p>
 	</body>
 </html>

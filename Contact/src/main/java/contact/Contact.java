@@ -87,7 +87,7 @@ public class Contact {
 		this.ville = ville;
 	}
 
-    public Contact(String firstName, String lastName, String phoneNumber, String email, String adress, String postalCode, String city) {
+    public Contact(String lastName, String firstName, String phoneNumber, String email, String adress, String postalCode, String city) {
         this.prenom = firstName;
         this.nom = lastName;
         this.num = phoneNumber;

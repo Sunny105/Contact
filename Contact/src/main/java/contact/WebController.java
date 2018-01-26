@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
+import ch.qos.logback.core.net.SyslogOutputStream;
 import contact.Contact;
 import contact.ContactRepository;
 import contact.ContactForm;
@@ -23,6 +24,8 @@ public class WebController extends WebMvcConfigurerAdapter {
 	@Autowired
     private ContactRepository repositoryC;
 	
+	private Contact currentContact = null;
+	
     @GetMapping("/Form")
     public String showForm(ContactForm contactForm) {
         return "Form";
@@ -30,7 +33,7 @@ public class WebController extends WebMvcConfigurerAdapter {
 
     @PostMapping("/Form")
     public String checkPersonInfo(@Valid ContactForm contactForm, BindingResult bindingResult) {
-
+    if (currentContact==null){
         if (bindingResult.hasErrors()) {
             return "Form";
         }
@@ -38,6 +41,18 @@ public class WebController extends WebMvcConfigurerAdapter {
         	repositoryC.save(new Contact(contactForm.getNom(), contactForm.getPrenom(), contactForm.getNum(),contactForm.getMail(),contactForm.getAdresse(),contactForm.getCP(),contactForm.getVille()));
         	return "redirect:/ListeContact";
         }
+    }
+    else {
+    	if (bindingResult.hasErrors()) {
+            ModelAndView mav = new ModelAndView("Form");
+            return "Form";
+        } else {
+            currentContact.setContactForm(contactForm);
+            repositoryC.save(currentContact);
+            currentContact =null;
+            return "ListeContact";
+        }
+    }
     }
     
     @GetMapping("/ListeContact")
@@ -58,11 +73,12 @@ public class WebController extends WebMvcConfigurerAdapter {
 
     @GetMapping(value = "/edit/{id}")
     public ModelAndView preEdit(@PathVariable long id) {
-        ModelAndView mav = new ModelAndView("edit");
-        Contact contact= repositoryC.findOne(id);
+        ModelAndView mav = new ModelAndView("Form");
+        currentContact= repositoryC.findOne(id);
         ContactForm contactForm = new ContactForm();
-        contactForm.setContact(contact);
+        contactForm.setContact(currentContact);
         mav.addObject("contactForm",contactForm);
+        System.out.println("Id: " + id + " id contact: "+ currentContact.getId());
         return mav;
     }
 }

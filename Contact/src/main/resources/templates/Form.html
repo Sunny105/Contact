@@ -37,8 +37,8 @@
                 	<td><input type="text" th:field="*{ville}" /></td>
                 	<td th:if="${#fields.hasErrors('ville')}" th:errors="*{ville}">Ville Error</td>
                 </tr>
-                <tr>
-                    <td><button type="submit">Ajouter</button></td>
+                <tr colspan = "2">
+                    <td><button type="submit">Valider</button></td>
                 </tr>
             </table>
         </form>
