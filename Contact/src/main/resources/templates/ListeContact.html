@@ -1,6 +1,22 @@
 <html>
 	<body>
 		<table>
+			<tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Téléphone</th>
+                <th colspan="2">Actions</th>
+            </tr>
+            <tr th:each="e : ${contacts}">
+                <td th:text="${e.getId()}"/>
+                <td th:text="${e.getNom()}"/>
+                <td th:text="${e.getPrenom()}"/>
+                <td th:text="${e.getNum()}"/>
+                <td><a th:href="@{'/edit/' + ${e.getId()}}">Editer</a></td>
+                <td><a th:href="@{'/delete/' + ${e.getId()}}">Supprimer</a></td>
+            </tr>
 		</table>
+		<p><a href="/Form">Ajouter</a></p>
 	</body>
 </html>

@@ -8,12 +8,12 @@
                     <td th:if="${#fields.hasErrors('nom')}" th:errors="*{nom}">Name Error</td>
                 </tr>
                 <tr>
-                    <td>Prenom:</td>
+                    <td>Pr√©nom:</td>
                     <td><input type="text" th:field="*{prenom}" /></td>
                     <td th:if="${#fields.hasErrors('prenom')}" th:errors="*{prenom}">Name Error</td>
                 </tr>
                 <tr>
-                	<td>NumÈro de tÈlÈphone</td>
+                	<td>Num√©ro de t√©l√©phone</td>
                 	<td><input type="text" th:field="*{num}" /></td>
                 	<td th:if="${#fields.hasErrors('num')}" th:errors="*{num}">Num Error</td>
                 </tr>
@@ -35,13 +35,15 @@
                 <tr>
                 	<td>Ville</td>
                 	<td><input type="text" th:field="*{ville}" /></td>
-                	<td th:if="${#fields.hasErrors('ville')}" th:errors="*{ville}">Num Error</td>
+                	<td th:if="${#fields.hasErrors('ville')}" th:errors="*{ville}">Ville Error</td>
                 </tr>
                 <tr>
                     <td><button type="submit">Ajouter</button></td>
                 </tr>
             </table>
         </form>
+        
+        <p><a href="/ListeContact">Annuler</a></p>
 		
 	</body>
 </html>

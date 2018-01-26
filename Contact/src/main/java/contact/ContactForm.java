@@ -7,6 +7,8 @@ import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Email;
 
+import contact.Contact;
+
 public class ContactForm {
 	@NotNull
 	@Size(min=2, max=30)
@@ -75,5 +77,14 @@ public class ContactForm {
 		this.ville = ville;
 	}
 	
-	
+	public void setContact(Contact contact)
+    {
+        nom=contact.getNom();
+        prenom=contact.getPrenom();
+        num=contact.getNum();
+        mail= contact.getMail();
+        adresse= contact.getAdresse();
+        CP= contact.getCP();
+        ville= contact.getVille();
+    }
 }
